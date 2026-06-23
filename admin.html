@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="admin-shell" id="loginView">
+    <div class="login-card">
+        <h2>Admin Login</h2>
+        <p>Enter admin code to access controls.</p>
+        <input id="adminCode" placeholder="Admin code">
+        <button class="pill-btn accent" onclick="login()">Login</button>
+    </div>
+</div>
+
+<div class="admin-shell hidden" id="dashboardView">
+    <header class="admin-top">
+        <h1>Mini Missions Admin</h1>
+        <button class="pill-btn" onclick="goBack()">Back to Site</button>
+    </header>
+
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <button class="sidebar-btn" onclick="showTab('missions')">Missions</button>
+            <button class="sidebar-btn" onclick="showTab('badges')">Badges</button>
+            <button class="sidebar-btn" onclick="showTab('themes')">Themes</button>
+            <button class="sidebar-btn" onclick="showTab('events')">Events</button>
+        </aside>
+
+        <main class="admin-main">
+            <section id="tab-missions" class="admin-tab">
+                <h2>Missions Editor</h2>
+                <div id="adminMissionsList"></div>
+                <h3>Add Mission</h3>
+                <input id="newMissionText" placeholder="Mission text">
+                <input id="newMissionXP" type="number" placeholder="XP reward">
+                <input id="newMissionCoins" type="number" placeholder="Coins reward">
+                <input id="newMissionType" placeholder="Type (click/hold/typing)">
+                <button class="pill-btn accent" onclick="addMission()">Add Mission</button>
+            </section>
+
+            <section id="tab-badges" class="admin-tab hidden">
+                <h2>Badges Editor</h2>
+                <div id="adminBadgesList"></div>
+            </section>
+
+            <section id="tab-themes" class="admin-tab hidden">
+                <h2>Themes</h2>
+                <p>Available themes: neon, pastel, darkglass, bright.</p>
+            </section>
+
+            <section id="tab-events" class="admin-tab hidden">
+                <h2>Global Events</h2>
+                <p>Toggle special events:</p>
+                <div id="eventsContainer"></div>
+            </section>
+        </main>
+    </div>
+</div>
+
+<script src="admin-widgets.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

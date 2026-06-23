@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Missions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-neon">
+
+<div class="app-shell">
+    <header class="top-bar">
+        <div class="logo-text">🎯 Mini Missions</div>
+        <div class="top-actions">
+            <button class="pill-btn" onclick="openShop()">Shop</button>
+            <button class="pill-btn" onclick="openAchievements()">Badges</button>
+            <button class="pill-btn" onclick="openDailyReward()">Daily</button>
+            <button class="pill-btn" onclick="cycleTheme()">Theme</button>
+            <button class="pill-btn accent" onclick="toggleAdminPanel()">Admin</button>
+        </div>
+    </header>
+
+    <main class="main-layout">
+        <section class="panel stats-panel">
+            <h2>Player Stats</h2>
+            <div class="xp-bar">
+                <div id="xpFill"></div>
+            </div>
+            <div class="stat-row"><span>Level</span><span id="level">1</span></div>
+            <div class="stat-row"><span>XP</span><span><span id="xp">0</span> / <span id="xpNeeded">100</span></span></div>
+            <div class="stat-row"><span>Streak</span><span id="streak">0</span></div>
+            <div class="stat-row"><span>Coins</span><span id="coins">0</span></div>
+            <div class="stat-row"><span>Rebirths</span><span id="rebirths">0</span></div>
+            <div class="stat-row"><span>XP Multiplier</span><span id="xpMult">1.0x</span></div>
+        </section>
+
+        <section class="panel missions-panel">
+            <h2>Today’s Missions</h2>
+            <div id="missionsContainer"></div>
+        </section>
+
+        <section class="panel side-panel">
+            <h2>Inventory</h2>
+            <div id="inventoryContainer"></div>
+
+            <h2>Active Theme</h2>
+            <p id="activeThemeLabel"></p>
+        </section>
+    </main>
+</div>
+
+<div id="modalOverlay" class="modal-overlay hidden">
+    <div class="modal">
+        <h2 id="modalTitle"></h2>
+        <div id="modalContent"></div>
+        <button class="pill-btn accent" onclick="closeModal()">Close</button>
+    </div>
+</div>
+
+<div id="adminPanel" class="admin-panel">
+    <div class="admin-header">
+        <span>Admin Control Panel</span>
+        <button class="pill-btn" onclick="closeAdminPanel()">Close</button>
+    </div>
+    <div class="admin-body">
+        <div class="admin-section">
+            <h3>Player Controls</h3>
+            <div class="admin-row">
+                <input id="adminCoinsAmount" type="number" placeholder="Coins amount">
+                <button class="pill-btn accent" onclick="adminGiveCoinsCustom()">Give Coins</button>
+            </div>
+            <div class="admin-row">
+                <input id="adminXPAmount" type="number" placeholder="XP amount">
+                <button class="pill-btn accent" onclick="adminGiveXPCustom()">Give XP</button>
+            </div>
+            <div class="admin-row">
+                <button class="pill-btn" onclick="adminSetLevel(10)">Set Level 10</button>
+                <button class="pill-btn" onclick="adminResetStats()">Reset Stats</button>
+                <button class="pill-btn" onclick="adminRebirth()">Force Rebirth</button>
+            </div>
+        </div>
+
+        <div class="admin-section">
+            <h3>Events</h3>
+            <div id="eventsContainer"></div>
+        </div>
+
+        <div class="admin-section">
+            <h3>Missions Editor</h3>
+            <div id="adminMissionsList"></div>
+            <div class="admin-row">
+                <input id="newMissionText" placeholder="Mission text">
+            </div>
+            <div class="admin-row">
+                <input id="newMissionXP" type="number" placeholder="XP reward">
+                <input id="newMissionCoins" type="number" placeholder="Coins reward">
+            </div>
+            <div class="admin-row">
+                <input id="newMissionType" placeholder="Type (click/hold/typing/reaction/timer/multi/tap)">
+                <input id="newMissionTarget" type="number" placeholder="Target (clicks/seconds)">
+            </div>
+            <div class="admin-row">
+                <input id="newMissionExtra" placeholder="Extra data (e.g. custom word)">
+            </div>
+            <button class="pill-btn accent" onclick="adminAddMission()">Add Mission</button>
+        </div>
+
+        <div class="admin-section">
+            <h3>Visual</h3>
+            <button class="pill-btn" onclick="cycleTheme()">Cycle Theme</button>
+        </div>
+    </div>
+</div>
+
+<script src="admin-widgets.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
